@@ -79,6 +79,14 @@ def apply_kernels(frame, kernels_dict):
     return full_frame
 
 def reorganise_frame(full_frame, height_unit, width_unit, height, width):
+    """
+    Given an a video frame `full_frame` (nd array) of some size, 
+    height_unit (int) and width_unit (int) indicating each individual webcam or filtered webcam instance size, 
+    and height (int) and width (int) indicating the number of instances to have in a grid of size height x width; 
+    
+    Return the full_frame in the height x width per frame unit shape.
+    Missing frames to fit the grid are replaced with zero values.
+    """
     no_frames = full_frame.shape[1]//width_unit
     wanted_frames = height*width
     # padded frame
@@ -94,6 +102,9 @@ def reorganise_frame(full_frame, height_unit, width_unit, height, width):
     return new_frame
 
 def label_frame(frame, text, position):
+    """
+    Return a labelled frame `frame` (nd array) with text `text` (str) at position `position` (int x int).
+    """
     font                   = cv2.FONT_HERSHEY_SIMPLEX
     fontScale              = 1
     fontColor              = (255,255,255)
@@ -103,6 +114,7 @@ def label_frame(frame, text, position):
 
 
 if __name__ == "__main__":
+    # operate webcam, viewing a concatenation of camera and filters.
     cap = cv2.VideoCapture(0)
     if not cap.isOpened(): raise IOError("Cannot open webcam")
 
