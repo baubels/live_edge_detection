@@ -117,7 +117,6 @@ if __name__ == "__main__":
         frame = cv2.resize(frame, None, fx=0.5, fy=0.5, interpolation=cv2.INTER_AREA)/256
         frame_with_filters = apply_kernels(frame, filters_to_use)
         reorganised_frame = reorganise_frame(frame_with_filters, frame.shape[0], frame.shape[1], 4, 4)
-        # labeled_frame = label_frame(frame_with_filters, frame.shape[0], frame.shape[1], 4, 4, labels)
         cv2.imshow('Webcam with many filters', reorganised_frame)
 
         c = cv2.waitKey(1)
