@@ -58,6 +58,7 @@ classical_kernels = [prewitt1, prewitt2, prewitt3,
                      kirsch1, kirsch2, kirsch3]
 
 
+
 def apply_kernels(frame, kernels, width):
     """
     Given an iterable `kernels` of numpy arrays and frame of type numpy array
